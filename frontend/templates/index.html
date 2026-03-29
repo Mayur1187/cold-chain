@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-hero">
+    <div>
+        <p class="eyebrow">Cold chain command center</p>
+        <h1>Autonomous intelligence for temperature-sensitive logistics.</h1>
+        <p class="hero-copy">
+            Monitoring, anomaly detection, decisioning, and automated intervention run continuously in the background.
+        </p>
+    </div>
+    <div class="hero-health card">
+        <span id="system-health-chip" class="status-pill neutral">Connecting</span>
+        <h2>System health</h2>
+        <p id="system-health-summary" class="muted">Waiting for live control-plane metrics.</p>
+        <div class="metric-inline">
+            <div>
+                <span class="metric-label">Fleet size</span>
+                <strong id="metric-total-vehicles">--</strong>
+            </div>
+            <div>
+                <span class="metric-label">Active alerts</span>
+                <strong id="metric-active-alerts">--</strong>
+            </div>
+            <div>
+                <span class="metric-label">Logged interventions</span>
+                <strong id="metric-anomalies">--</strong>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="dashboard-grid">
+    <article class="card">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">Priority vehicle</p>
+                <h2>Most critical shipment</h2>
+            </div>
+            <span class="metric-chip">Live risk scoring</span>
+        </div>
+        <div id="critical-vehicle" class="loading-state">Loading vehicle priority stack...</div>
+    </article>
+
+    <article class="card">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">Overview</p>
+                <h2>Fleet snapshot</h2>
+            </div>
+            <span id="metric-average-temp" class="metric-chip">-- C avg</span>
+        </div>
+        <div id="vehicle-overview" class="stack-list loading-state">Loading fleet state...</div>
+    </article>
+</section>
+
+<section class="card">
+    <div class="section-heading">
+        <div>
+            <p class="eyebrow">Active explainability</p>
+            <h2>Autonomous alerts and actions</h2>
+        </div>
+        <a class="text-link" href="{{ url_for('web.logs_page') }}">View full event log</a>
+    </div>
+    <div id="active-alerts" class="stack-list loading-state">Loading intervention feed...</div>
+</section>
+{% endblock %}

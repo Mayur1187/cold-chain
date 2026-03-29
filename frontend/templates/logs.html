@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-hero compact">
+    <div>
+        <p class="eyebrow">Decision explainability</p>
+        <h1>Autonomous interventions with reasons.</h1>
+        <p class="hero-copy">Every automated action is logged with the anomaly type, response, and explanation that triggered it.</p>
+    </div>
+    <div id="logs-summary" class="hero-health card">
+        <span class="metric-label">Event feed</span>
+        <p class="muted">Preparing recent anomaly and action history.</p>
+    </div>
+</section>
+
+<section class="card">
+    <div class="section-heading">
+        <div>
+            <p class="eyebrow">Operational history</p>
+            <h2>Recent actions</h2>
+        </div>
+        <span class="metric-chip">Newest first</span>
+    </div>
+    <div class="table-wrap">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>Vehicle</th>
+                    <th>Anomaly</th>
+                    <th>Action</th>
+                    <th>Reason</th>
+                </tr>
+            </thead>
+            <tbody id="logs-table-body">
+                <tr>
+                    <td colspan="5" class="loading-state">Loading event history...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+<link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+>
+{% endblock %}
+
+{% block content %}
+<section class="page-hero compact">
+    <div>
+        <p class="eyebrow">Live map</p>
+        <h1>Route visibility with autonomous rerouting.</h1>
+        <p class="hero-copy">Anomaly response changes route color, updates destination, and highlights the nearest cold storage fallback hub.</p>
+    </div>
+    <div class="hero-health card">
+        <span class="metric-label">Map behavior</span>
+        <p class="muted">If Leaflet or tiles are unavailable, the panel falls back to live coordinates and route summaries.</p>
+    </div>
+</section>
+
+<section class="map-layout">
+    <article class="card map-card">
+        <div id="map" class="map-canvas"></div>
+        <div id="map-fallback" class="fallback-banner hidden"></div>
+    </article>
+    <aside class="card sidebar-card">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">Network actions</p>
+                <h2>Reroutes and hubs</h2>
+            </div>
+        </div>
+        <div id="route-feed" class="stack-list loading-state">Loading route actions...</div>
+        <div class="sidebar-divider"></div>
+        <div id="hub-list" class="stack-list loading-state">Loading cold storage hubs...</div>
+    </aside>
+</section>
+{% endblock %}
+
+{% block page_scripts %}
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+    defer
+></script>
+<script src="{{ url_for('static', filename='js/map.js') }}" defer></script>
+{% endblock %}

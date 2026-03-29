@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }} | {{ app_name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    {% block extra_head %}{% endblock %}
+</head>
+<body data-page="{{ page_key }}">
+    <div class="app-shell">
+        <header class="topbar">
+            <div class="brand-block">
+                <span class="brand-kicker">Autonomous logistics</span>
+                <a class="brand-mark" href="{{ url_for('web.dashboard') }}">{{ app_name }}</a>
+            </div>
+            <nav class="topnav">
+                <a data-nav="dashboard" href="{{ url_for('web.dashboard') }}">Dashboard</a>
+                <a data-nav="fleet" href="{{ url_for('web.fleet_page') }}">Vehicles</a>
+                <a data-nav="map" href="{{ url_for('web.map_page') }}">Map</a>
+                <a data-nav="logs" href="{{ url_for('web.logs_page') }}">Logs</a>
+            </nav>
+            <div class="autonomy-pill">
+                <span class="status-dot"></span>
+                Autonomous loop active
+            </div>
+        </header>
+
+        <main class="page-shell">
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer class="site-footer">
+            Flask backend, SQLite shared state, agent-driven monitoring, decisions, and actions.
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+    {% block page_scripts %}{% endblock %}
+</body>
+</html>

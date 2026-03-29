@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-hero compact">
+    <div>
+        <p class="eyebrow">Fleet intelligence</p>
+        <h1>Vehicle-by-vehicle thermal posture.</h1>
+        <p class="hero-copy">Every vehicle updates from the shared telemetry store without manual refreshes or operator-triggered jobs.</p>
+    </div>
+    <div class="hero-health card mini-metrics">
+        <div>
+            <span class="metric-label">Total vehicles</span>
+            <strong id="fleet-total">--</strong>
+        </div>
+        <div>
+            <span class="metric-label">Critical</span>
+            <strong id="fleet-critical">--</strong>
+        </div>
+        <div>
+            <span class="metric-label">Watchlist</span>
+            <strong id="fleet-watch">--</strong>
+        </div>
+    </div>
+</section>
+
+<section class="split-grid">
+    <article class="card">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">Fleet table</p>
+                <h2>Live vehicle state</h2>
+            </div>
+            <span class="metric-chip">Auto-refreshing</span>
+        </div>
+        <div class="table-wrap">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Vehicle</th>
+                        <th>Status</th>
+                        <th>Temperature</th>
+                        <th>Risk</th>
+                        <th>ETA</th>
+                        <th>Route</th>
+                    </tr>
+                </thead>
+                <tbody id="fleet-table-body">
+                    <tr>
+                        <td colspan="6" class="loading-state">Loading fleet telemetry...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </article>
+
+    <aside class="card sidebar-card">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">Priority queue</p>
+                <h2>Escalation order</h2>
+            </div>
+        </div>
+        <div id="priority-queue" class="stack-list loading-state">Ranking vehicles by risk score...</div>
+    </aside>
+</section>
+{% endblock %}
+
+{% block page_scripts %}
+<script src="{{ url_for('static', filename='js/vehicles.js') }}" defer></script>
+{% endblock %}
