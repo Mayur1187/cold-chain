@@ -104,6 +104,19 @@ After deployment:
 3. Wait about 20 to 40 seconds.
 4. Confirm anomaly -> action -> log behavior appears automatically.
 
+## Deploy on Vercel
+
+This project is also ready to be deployed on Vercel using the included `vercel.json` file.
+
+### Deployment Steps
+
+1. Push this project to GitHub.
+2. In Vercel, create a new project and import your repository.
+3. Vercel will automatically detect `vercel.json` and deploy the Flask application using the `@vercel/python` builder.
+
+### Important SQLite note for Vercel
+Vercel uses Serverless Functions which have an ephemeral, read-only filesystem (except for `/tmp`). The SQLite database will reset every time the function wakes up from a cold start. For persistent data on Vercel, consider migrating to Vercel Postgres or another remote database service.
+
 ## Beginner Guide: Understand and Use the System
 
 If you are using this for the first time, think of it as a self-running control tower.

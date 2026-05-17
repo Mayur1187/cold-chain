@@ -1,11 +1,13 @@
 import os
+import tempfile
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(BASE_DIR)
 FRONTEND_TEMPLATE_DIR = os.path.join(PROJECT_ROOT, "frontend", "templates")
 FRONTEND_STATIC_DIR = os.path.join(PROJECT_ROOT, "frontend", "static")
-DATABASE_PATH = os.path.join(BASE_DIR, "cold_chain.db")
+IS_VERCEL = os.environ.get("VERCEL") == "1"
+DATABASE_PATH = os.path.join(tempfile.gettempdir(), "cold_chain.db") if IS_VERCEL else os.path.join(BASE_DIR, "cold_chain.db")
 
 APP_NAME = "Autonomous Cold Chain Intelligence Platform"
 APP_HOST = "127.0.0.1"

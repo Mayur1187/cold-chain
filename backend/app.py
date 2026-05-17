@@ -1,6 +1,6 @@
 from flask import Flask
 
-from config import APP_HOST, APP_NAME, APP_PORT, FRONTEND_STATIC_DIR, FRONTEND_TEMPLATE_DIR
+from config import APP_HOST, APP_NAME, APP_PORT, FRONTEND_STATIC_DIR, FRONTEND_TEMPLATE_DIR, IS_VERCEL
 from models import initialize_database
 from routes import register_routes
 from simulation import AutonomousColdChainEngine
@@ -22,7 +22,7 @@ def create_app():
     register_routes(app)
 
     global engine
-    if engine is None:
+    if engine is None and not IS_VERCEL:
         engine = AutonomousColdChainEngine()
         engine.start()
         app.extensions["autonomous_engine"] = engine

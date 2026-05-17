@@ -1,0 +1,13 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+
+backend/*.db
+backend/*.db-shm
+backend/*.db-wal
+
+.env
+.env.*
+.vercel/
