@@ -1,4 +1,11 @@
+import os
+import sys
+
 from flask import Flask
+
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+if CURRENT_DIR not in sys.path:
+    sys.path.insert(0, CURRENT_DIR)
 
 from config import APP_HOST, APP_NAME, APP_PORT, FRONTEND_STATIC_DIR, FRONTEND_TEMPLATE_DIR, IS_VERCEL
 from models import initialize_database
